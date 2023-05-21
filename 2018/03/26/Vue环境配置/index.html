@@ -565,19 +565,13 @@ npm run build
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 
 <script>
-    var id = location.pathname;
-    if ('false' === 'true') {
-        id = md5(location.pathname)
-    } else if ('false' === 'true') {
-        id = location.pathname;
-    }
     var gitalk = new Gitalk({
-        clientID: '8de73006f112515f4df8',
-        clientSecret: '4443ee1434f3f2527647779ed1d0fe54fc79fd38',
-        repo: 'NewGr8Player.github.io',
+        clientID: 'd7730f5f03b23b3211f9',
+        clientSecret: 'a579d8b35a5504225759bfe2cca845b829283793',
+        repo: 'newgr8player.github.io',
         owner: 'NewGr8Player',
         admin: ['NewGr8Player'],
-        id: id,
+        id: md5(location.pathname),
         distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
