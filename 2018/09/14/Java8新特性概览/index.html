@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com"/>
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Java8新特性概览 | 
+        
+        呦呵丶晓晓
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+    <link rel="icon" href="/img/favicon.ico">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="Java8新特性简单介绍">
+    <meta name="keywords" content=",标签">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/github-v2.min.css?AfzKxt++K+/lhZBlSjnxwg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="呦呵丶晓晓">
+    <meta name="msapplication-starturl" content="http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="呦呵丶晓晓">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.ico">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Java8新特性概览 | 呦呵丶晓晓">
+    <meta property="og:image" content="/img/favicon.ico">
+    <meta property="og:description" content="Java8新特性简单介绍">
+    <meta property="og:article:tag" content="标签"> 
+
+    
+        <meta property="article:published_time" content="Fri Sep 14 2018 11:04:06 GMT+0800">
+        <meta property="article:modified_time" content="Mon Aug 26 2019 10:52:26 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/index.html",
+    "headline": "Java8新特性概览",
+    "datePublished": "Fri Sep 14 2018 11:04:06 GMT+0800",
+    "dateModified": "Mon Aug 26 2019 10:52:26 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "晓晓Sama",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "一只贪吃嗜睡的呆萌程序猿。"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "呦呵丶晓晓",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.ico"
+        }
+    },
+    "keywords": ",标签",
+    "description": "Java8新特性简单介绍",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AE%9E%E7%8E%B0"><span class="post-toc-number">1.</span> <span class="post-toc-text">接口的默认实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="post-toc-number">2.</span> <span class="post-toc-text">Lambda表达式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.</span> <span class="post-toc-text">函数式接口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%8E%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E7%9A%84%E5%BC%95%E7%94%A8"><span class="post-toc-number">4.</span> <span class="post-toc-text">方法与构造方法的引用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Lambda%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="post-toc-number">5.</span> <span class="post-toc-text">Lambda作用域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BF%E9%97%AE%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">访问局部变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BF%E9%97%AE%E5%B1%9E%E6%80%A7%E4%B8%8E%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">访问属性与静态变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3%E7%9A%84%E9%BB%98%E8%AE%A4%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">访问接口的默认实现方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%96%AD%E8%A8%80%E6%8E%A5%E5%8F%A3-Predicates"><span class="post-toc-number">6.</span> <span class="post-toc-text">断言接口(Predicates)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%AF%94%E8%BE%83%E5%99%A8-Comparators"><span class="post-toc-number">7.</span> <span class="post-toc-text">比较器(Comparators)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Optionals%E7%B1%BB-Optionals"><span class="post-toc-number">8.</span> <span class="post-toc-text">Optionals类(Optionals)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%B5%81-Streams"><span class="post-toc-number">9.</span> <span class="post-toc-text">流(Streams)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%87%E6%BB%A4%E6%96%B9%E6%B3%95-Filter"><span class="post-toc-number">9.1.</span> <span class="post-toc-text">过滤方法(Filter)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8E%92%E5%BA%8F%E6%96%B9%E6%B3%95-Sorted"><span class="post-toc-number">9.2.</span> <span class="post-toc-text">排序方法(Sorted)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%98%A0%E5%B0%84%E6%96%B9%E6%B3%95-Map"><span class="post-toc-number">9.3.</span> <span class="post-toc-text">映射方法(Map)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8C%B9%E9%85%8D%E6%96%B9%E6%B3%95-Match"><span class="post-toc-number">9.4.</span> <span class="post-toc-text">匹配方法(Match)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AE%A1%E6%95%B0%E5%99%A8-Count"><span class="post-toc-number">9.5.</span> <span class="post-toc-text">计数器(Count)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%88%E5%B9%B6-Reduce"><span class="post-toc-number">9.6.</span> <span class="post-toc-text">合并(Reduce)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B9%B6%E8%A1%8C%E6%B5%81-Parallel-Streams"><span class="post-toc-number">9.7.</span> <span class="post-toc-text">并行流(Parallel Streams)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Map%E7%B1%BB-Map"><span class="post-toc-number">10.</span> <span class="post-toc-text">Map类(Map)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%97%A5%E6%9C%9FAPI-Date-API"><span class="post-toc-number">11.</span> <span class="post-toc-text">日期API(Date API)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%B6%E9%92%9F%E7%B1%BB-Clock"><span class="post-toc-number">11.1.</span> <span class="post-toc-text">时钟类(Clock)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%97%B6%E5%8C%BA%E7%B1%BB-Timezones"><span class="post-toc-number">11.2.</span> <span class="post-toc-text">时区类(Timezones)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%97%B6%E9%97%B4%E7%B1%BB-LocalTime"><span class="post-toc-number">11.3.</span> <span class="post-toc-text">本地时间类(LocalTime)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%97%A5%E6%9C%9F%E7%B1%BB-LocalDate"><span class="post-toc-number">11.4.</span> <span class="post-toc-text">本地日期类(LocalDate)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%AC%E5%9C%B0%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E7%B1%BB-LocalDateTime"><span class="post-toc-number">11.5.</span> <span class="post-toc-text">本地日期时间类(LocalDateTime)</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%B3%A8%E8%A7%A3-Annotations"><span class="post-toc-number">12.</span> <span class="post-toc-text">注解(Annotations)</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 9 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Java8新特性概览
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>晓晓Sama</strong>
+        <span>9月 14, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-none-link" href="/tags/%E6%A0%87%E7%AD%BE/" rel="tag">标签</a>
+    </ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Java8新特性概览&url=http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/index.html&pic=http://NewGr8Player.github.io/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Java8新特性概览&url=http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/index.html&via=晓晓Sama" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+        <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=呦呵丶晓晓&title=Java8新特性概览&summary=呆萌二次元程序员&pics=http://NewGr8Player.github.io/img/favicon.ico&url=http://NewGr8Player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 QQ
+            </li>
+        </a>
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="接口的默认实现"><a href="#接口的默认实现" class="headerlink" title="接口的默认实现"></a>接口的默认实现</h1><p>Java8允许我们通过使用<code>default</code>关键字在接口中添加一个非抽象方法。</p>
+<pre><code class="Java">interface Formula &#123;
+    double calculate(int a);
+
+    default double sqrt(int a) &#123;
+        return Math.sqrt(a);
+    &#125;
+&#125;
+</code></pre>
+<p>除了抽象方法<code>calculate</code>外，接口<code>Formula</code>也定义了包含默认实现的<code>sqrt</code>方法。实现类只需要实现抽象方法<code>calculate</code>。默认方法<code>sqrt</code>可以做到开箱即用。</p>
+<pre><code class="Java">Formula formula = new Formula() &#123;
+    @Override
+    public double calculate(int a) &#123;
+        return sqrt(a * 100);
+    &#125;
+&#125;;
+
+formula.calculate(100); // 100.0
+formula.sqrt(16); // 4.0
+</code></pre>
+<p><code>formula</code>被作为匿名对象实现。代码看起来比较冗长，6行代码职位了实现一个简单的计算<code>sqrt(a * 100)</code>。</p>
+<h1 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h1><p>首先是一个先前版本中对<code>List&lt;String&gt;</code>进行排序的示例</p>
+<pre><code class="Java">List&lt;String&gt; names = Arrays.asList(&quot;peter&quot;, &quot;anna&quot;, &quot;mike&quot;, &quot;xenia&quot;);
+
+Collections.sort(names, new Comparator&lt;String&gt;() &#123;
+    @Override
+    public int compare(String a, String b) &#123;
+        return b.compareTo(a);
+    &#125;
+&#125;);
+</code></pre>
+<p>静态方法<code>Collections.sort</code>传入了一个<code>list</code>和<code>Comparator</code>对象用于对一直的列表进行排序。<br>为了不在频繁的创建匿名对象，Java8推出了更简短的语法:<code>lambda表达式</code></p>
+<pre><code class="Java">Collections.sort(names, (String a, String b) -&gt; &#123;
+    return b.compareTo(a);
+&#125;);
+</code></pre>
+<p>改写成Labda表达式使得代码变得更加直观简短</p>
+<pre><code class="Java">Collections.sort(names, (String a, String b) -&gt; b.compareTo(a));
+</code></pre>
+<p>对于方法体内只有一行代码的表达式，可以不使用<code>&#123;&#125;</code>和<code>return</code>关键字使得代码更加简短</p>
+<pre><code class="Java">Collections.sort(names, (a, b) -&gt; b.compareTo(a));
+</code></pre>
+<p>因为Java编译器会自动推断传入参数的类型，所以参数表中的参数类型也可以省略。</p>
+<h1 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h1><p>lambda表达式如何匹配Java中的类型呢？每个lambda都由一个接口去指定类型。它(函数式接口)必须<code>仅包含一个抽象方法的声明</code>。每个该类型lambda表达式都会匹配这个抽象方法。</p>
+<p>只要接口内只有一个抽象方法我们就可以把它当做lambda表达式使用。但是，为了确保接口是一定满足要求的，应当添加<code>@FunctionalInterface</code>注解。添加该注解后，当你再想接口内声明第二个抽象方法的时候，编译器会直接返回一个编译错误。</p>
+<pre><code class="Java">@FunctionalInterface
+interface Converter&lt;F, T&gt; &#123;
+    T convert(F from);
+&#125;
+</code></pre>
+<p><strong>请注意，此处去掉<code>@FunctionalInterface</code>注解后该接口仍然可以作为lambda表达式使用。</strong></p>
+<pre><code class="Java">Converter&lt;String, Integer&gt; converter = (from) -&gt; Integer.valueOf(from);
+Integer converted = converter.convert(&quot;123&quot;);
+System.out.println(converted); // 123
+</code></pre>
+<blockquote>
+<p>一个或多个<code>static</code>方法不会影响该接口成为函数式接口<br>接口中可以包含被<code>default</code>关键字修饰的默认实现<br>支持泛型与继承关系，只要继承后的接口仍然满足成为函数式接口的条件</p>
+</blockquote>
+<h1 id="方法与构造方法的引用"><a href="#方法与构造方法的引用" class="headerlink" title="方法与构造方法的引用"></a>方法与构造方法的引用</h1><p>之前的代码可以通过静态方法引用进一步简化：</p>
+<pre><code class="Java">Converter&lt;String, Integer&gt; converter = Integer::valueOf;
+Integer converted = converter.convert(&quot;123&quot;);
+System.out.println(converted); // 123
+</code></pre>
+<p>Java8可以使用<code>::</code>关键字传递对方法或构造方法的引用。上面的代码演示了如何引用静态方法，下面演示如何引用对象的方法。</p>
+<pre><code class="Java">class Something &#123;
+    String startsWith(String s) &#123;
+        return String.valueOf(s.charAt(0));
+    &#125;
+&#125;
+</code></pre>
+<pre><code class="Java">Something something = new Something();
+Converter&lt;String, String&gt; converter = something::startsWith;
+String converted = converter.convert(&quot;Java&quot;);
+System.out.println(converted); // &quot;J&quot;
+</code></pre>
+<p>接下来演示调用构造方法的情况：</p>
+<ol>
+<li>首先定义一个拥有不同构造方法Bean</li>
+</ol>
+<pre><code class="Java">class Person &#123;
+    String firstName;
+    String lastName;
+
+    Person() &#123;&#125;
+
+    Person(String firstName, String lastName) &#123;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    &#125;
+&#125;
+</code></pre>
+<ol start="2">
+<li>然后创建一个Person类型的工厂的接口用来创建person对象</li>
+</ol>
+<pre><code class="Java">interface PersonFactory&lt;P extends Person&gt; &#123;
+    P create(String firstName, String lastName);
+&#125;
+</code></pre>
+<ol start="3">
+<li>使用示例<br>我们可以通过构造方法的引用去调用该接口而不用去实现其定义的抽象方法。</li>
+</ol>
+<pre><code class="Java">PersonFactory&lt;Person&gt; personFactory = Person::new;
+Person person = personFactory.create(&quot;Peter&quot;, &quot;Parker&quot;);
+</code></pre>
+<p>我们通过<code>Person::new</code>创建了对<code>Person</code>类构造方法的引用。Java编译器会根据<code>PersonFactory.create</code>中传入的参数重载构造方法。</p>
+<h1 id="Lambda作用域"><a href="#Lambda作用域" class="headerlink" title="Lambda作用域"></a>Lambda作用域</h1><p>Lambda在访问外层作用域的变量时，与匿名对象的方式类似。</p>
+<h2 id="访问局部变量"><a href="#访问局部变量" class="headerlink" title="访问局部变量"></a>访问局部变量</h2><pre><code class="Java">final int num = 1;
+Converter&lt;Integer, String&gt; stringConverter =
+(from) -&gt; String.valueOf(from + num);
+
+stringConverter.convert(2); // 3
+</code></pre>
+<p>与匿名对象不同，变量<code>num</code>不是必须使用<code>final</code>修饰。下面代码仍然合理。</p>
+<pre><code class="Java">int num = 1;
+Converter&lt;Integer, String&gt; stringConverter =
+(from) -&gt; String.valueOf(from + num);
+
+stringConverter.convert(2); // 3
+</code></pre>
+<p>但是在编译过程中<code>num</code>会隐式转换为<code>被final修饰</code>的，所以如下代码不能通过编译:</p>
+<pre><code class="Java">int num = 1;
+Converter&lt;Integer, String&gt; stringConverter =
+(from) -&gt; String.valueOf(from + num);
+num = 3; /* 这里不同 */
+</code></pre>
+<p>并且在labda表达式中修改<code>num</code>的值也是<strong>被禁止</strong>的。</p>
+<h2 id="访问属性与静态变量"><a href="#访问属性与静态变量" class="headerlink" title="访问属性与静态变量"></a>访问属性与静态变量</h2><p>与匿名对象相同，在lambda作用域内，可以对外部的属性与静态变量进行访问与修改。</p>
+<pre><code class="Java">class Lambda4 &#123;
+    static int outerStaticNum;
+    int outerNum;
+
+    void testScopes() &#123;
+        Converter&lt;Integer, String&gt; stringConverter1 = (from) -&gt; &#123;
+        outerNum = 23;
+        return String.valueOf(from);
+    &#125;;
+
+    Converter&lt;Integer, String&gt; stringConverter2 = (from) -&gt; &#123;
+        outerStaticNum = 72;
+        return String.valueOf(from);
+    &#125;;
+&#125;
+&#125;
+</code></pre>
+<h2 id="访问接口的默认实现方法"><a href="#访问接口的默认实现方法" class="headerlink" title="访问接口的默认实现方法"></a>访问接口的默认实现方法</h2><p>在之前提到的<code>Formula</code>接口中声明的被<code>default</code>修饰的的<code>sqrt</code>方法可以直接使用。但是对于lambda表达式则不可以。</p>
+<p>默认方法在lambda作用域中<strong>不能被访问</strong>，以下代码不能正常运行。</p>
+<pre><code class="Java">Formula formula = (a) -&gt; sqrt( a * 100);
+</code></pre>
+<p>内建函数式接口</p>
+<p>JDK1.8中包括了许多内建的函数式接口。有些源自早先版本的JDK比如<code>Comparator</code>或者<code>Runnable</code>。这些现有的接口都是使用<code>@FunctionalInterface</code>注解拓展用来支持Lambda表达式。</p>
+<p>Java8同样也加入了一些新的函数式接口使得开发更加快捷。比如<a href="https://code.google.com/p/guava-libraries/">Google Guava</a>库。如果经常使用这个库，建议查看它的源码，以便了解其中较为常用的方法是如何通过函数式接口进行拓展的。</p>
+<h1 id="断言接口-Predicates"><a href="#断言接口-Predicates" class="headerlink" title="断言接口(Predicates)"></a>断言接口(Predicates)</h1><p><code>Predicates</code>是一个仅传入一个参数返回<code>boolean</code>类型的方法。这个接口包含了许多默认方法用于判断复杂逻辑(<code>且</code>，<code>或</code>，<code>非</code>)。</p>
+<pre><code class="Java">Predicate&lt;String&gt; predicate = (s) -&gt; s.length() &gt; 0;
+
+predicate.test(&quot;foo&quot;); // true
+predicate.negate().test(&quot;foo&quot;); // false
+
+Predicate&lt;Boolean&gt; nonNull = Objects::nonNull;
+Predicate&lt;Boolean&gt; isNull = Objects::isNull;
+
+Predicate&lt;String&gt; isEmpty = String::isEmpty;
+Predicate&lt;String&gt; isNotEmpty = isEmpty.negate();
+</code></pre>
+<p>Functions接口(Functions)</p>
+<p>Functions接口传入一个参数并且有返回值。默认方法可以和链式方法一起使用(<code>compose</code>,<code>andThen</code>)</p>
+<pre><code class="Java">Function&lt;String, Integer&gt; toInteger = Integer::valueOf;
+Function&lt;String, String&gt; backToString = toInteger.andThen(String::valueOf);
+
+backToString.apply(&quot;123&quot;); // &quot;123&quot;
+</code></pre>
+<p>生产者(Suppliers)</p>
+<p>通过生产者能得到一个传入泛型的对象。与Functions接口不同，生产者不传入任何参数。</p>
+<pre><code class="Java">Supplier&lt;Person&gt; personSupplier = Person::new;
+personSupplier.get(); // new Person
+</code></pre>
+<p>消费者(Consumers)</p>
+<p>消费者提供对单一输入参数的处理。</p>
+<pre><code class="Java">Consumer&lt;Person&gt; greeter = (p) -&gt; System.out.println(&quot;Hello, &quot; + p.firstName);
+greeter.accept(new Person(&quot;Luke&quot;, &quot;Skywalker&quot;));
+</code></pre>
+<h1 id="比较器-Comparators"><a href="#比较器-Comparators" class="headerlink" title="比较器(Comparators)"></a>比较器(Comparators)</h1><p><code>Comparators</code>在早先的Java版本中比较常用。Java8为他在接口中添加了大量的默认方法。</p>
+<h1 id="Optionals类-Optionals"><a href="#Optionals类-Optionals" class="headerlink" title="Optionals类(Optionals)"></a>Optionals类(Optionals)</h1><p><code>Optionals</code>不是一个函数式接口，是一种为了避免<code>NullPointerException</code>的实用解决方案。</p>
+<p><code>Optionals</code>是一个简单的值容器，它可以为<code>null</code>或<code>非空值</code>。如果一个方法可能返回<code>null</code>也可能返回<code>非空值</code>就可以使用<code>Optional</code>。</p>
+<pre><code class="Java">Optional&lt;String&gt; optional = Optional.of(&quot;bam&quot;);
+
+optional.isPresent(); // true
+optional.get(); // &quot;bam&quot;
+optional.orElse(&quot;fallback&quot;); // &quot;bam&quot;
+
+optional.ifPresent((s) -&gt; System.out.println(s.charAt(0))); // &quot;b&quot;
+</code></pre>
+<h1 id="流-Streams"><a href="#流-Streams" class="headerlink" title="流(Streams)"></a>流(Streams)</h1><p><code>java.util.Stream</code>提供对一组元素进行一个或多个操作的方法。流操作不是<code>intermediate</code>(可以继续操作)就是<code>terminal</code>(不可以继续操作)的。<code>terminal</code>操作返回一个明确的类型结果，<code>intermediate</code>操作返回流本书以便于继续调用Stream方法进行处理。流处理的数据源可以来自<code>java.util.Collection</code>中的列表(list)或者集合<code>set</code>。流操作可以是连续的也可以是并行的。</p>
+<pre><code class="Java">List&lt;String&gt; stringCollection = new ArrayList&lt;&gt;();
+stringCollection.add(&quot;ddd2&quot;);
+stringCollection.add(&quot;aaa2&quot;);
+stringCollection.add(&quot;bbb1&quot;);
+stringCollection.add(&quot;aaa1&quot;);
+stringCollection.add(&quot;bbb3&quot;);
+stringCollection.add(&quot;ccc&quot;);
+stringCollection.add(&quot;bbb2&quot;);
+stringCollection.add(&quot;ddd1&quot;);
+</code></pre>
+<p>在Java8中Collections已被拓展用于支持流操作，所以只需要调用<code>Collection.stream()</code>或<code>Collection.parallelStream()</code>就能得到流处理所需要的数据源。</p>
+<h2 id="过滤方法-Filter"><a href="#过滤方法-Filter" class="headerlink" title="过滤方法(Filter)"></a>过滤方法(Filter)</h2><p>Filter传入一个<code>Predicate</code>对象用来过滤流中的所有元素。这个操作是<code>intermediate</code>(可继续操作的)。所以我们在调用filter后还可以继续调用<code>forEach</code>去遍历流中的元素。但是<code>forEach</code>是<code>terminal</code>(不可继续操作的)。它的返回值类型是<code>void</code>，所以不能再继续调用任何流处理方法。</p>
+<pre><code class="Java">stringCollection
+    .stream()
+    .filter((s) -&gt; s.startsWith(&quot;a&quot;))
+    .forEach(System.out::println);
+
+// &quot;aaa2&quot;, &quot;aaa1&quot;
+</code></pre>
+<h2 id="排序方法-Sorted"><a href="#排序方法-Sorted" class="headerlink" title="排序方法(Sorted)"></a>排序方法(Sorted)</h2><p>Sorted是<code>intermediate</code>(可继续操作的)返回按照既定规则排序的流数据视图的方法。视图中的元素会按照<code>自然序</code>排序除非指定了<code>Comparator</code>。</p>
+<pre><code class="Java">stringCollection
+    .stream()
+    .sorted()
+    .filter((s) -&gt; s.startsWith(&quot;a&quot;))
+    .forEach(System.out::println);
+
+// &quot;aaa1&quot;, &quot;aaa2&quot;
+</code></pre>
+<p><strong><code>Sorted</code>仅创建了排序后元素的视图，并没有真正去更改集合中元素的位置，集合中元素位置不会受到该方法的影响</strong></p>
+<pre><code class="Java">System.out.println(stringCollection);
+// ddd2, aaa2, bbb1, aaa1, bbb3, ccc, bbb2, ddd1
+</code></pre>
+<h2 id="映射方法-Map"><a href="#映射方法-Map" class="headerlink" title="映射方法(Map)"></a>映射方法(Map)</h2><p>Map是<code>intermediate</code>(可继续操作的)。它通过给定方法将元素放到另一个对象中。下面的例子把流中的元素转换为大写，当然也可以使用map方法把流中对象转换为另一个类型的对象。结果流的泛型类型取决于传递给map方法的泛型类型。</p>
+<pre><code class="Java">stringCollection
+    .stream()
+    .map(String::toUpperCase)
+    .sorted((a, b) -&gt; b.compareTo(a))
+    .forEach(System.out::println);
+
+// &quot;DDD2&quot;, &quot;DDD1&quot;, &quot;CCC&quot;, &quot;BBB3&quot;, &quot;BBB2&quot;, &quot;AAA2&quot;, &quot;AAA1&quot;
+</code></pre>
+<h2 id="匹配方法-Match"><a href="#匹配方法-Match" class="headerlink" title="匹配方法(Match)"></a>匹配方法(Match)</h2><p><code>Match</code>是<code>terminal</code>(可继续操作的)。Match可以用来检查流中是否存在复合匹配条件的数据，并返回<code>true</code>或<code>false</code>。</p>
+<pre><code class="Java">boolean anyStartsWithA =
+stringCollection
+    .stream()
+    .anyMatch((s) -&gt; s.startsWith(&quot;a&quot;));
+
+System.out.println(anyStartsWithA); // true
+
+boolean allStartsWithA = 
+    stringCollection 
+        .stream() 
+        .allMatch((s) -&gt; s.startsWith(&quot;a&quot;));
+
+System.out.println(allStartsWithA); // false
+
+boolean noneStartsWithZ =
+    stringCollection
+        .stream()
+        .noneMatch((s) -&gt; s.startsWith(&quot;z&quot;));
+
+System.out.println(noneStartsWithZ); // true
+</code></pre>
+<h2 id="计数器-Count"><a href="#计数器-Count" class="headerlink" title="计数器(Count)"></a>计数器(Count)</h2><p><code>Count</code>是<code>terminal</code>(不可继续操作的)。返回流中元素的数量，返回值类型为<code>long</code>。</p>
+<pre><code class="Java">long startsWithB =
+    stringCollection
+        .stream()
+        .filter((s) -&gt; s.startsWith(&quot;b&quot;))
+        .count();
+
+System.out.println(startsWithB); // 3
+</code></pre>
+<h2 id="合并-Reduce"><a href="#合并-Reduce" class="headerlink" title="合并(Reduce)"></a>合并(Reduce)</h2><p><code>Reduce</code>是<code>terminal</code>(不可继续操作的)。它按照给定的规则合并流内的元素，并且使用<code>Optional</code>承载结果值。</p>
+<pre><code class="Java">Optional&lt;String&gt; reduced =
+    stringCollection
+        .stream()
+        .sorted()
+        .reduce((s1, s2) -&gt; s1 + &quot;#&quot; + s2);
+
+reduced.ifPresent(System.out::println);
+// &quot;aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2&quot;
+</code></pre>
+<h2 id="并行流-Parallel-Streams"><a href="#并行流-Parallel-Streams" class="headerlink" title="并行流(Parallel Streams)"></a>并行流(Parallel Streams)</h2><p>流可以是<code>sequential</code>(顺序的)也可以是<code>parallel</code>(并行的)。并行流是在多线程的基础上完成的。</p>
+<p>下面的例子是展示使用并行流并且并行流的使用非常简单。</p>
+<ol>
+<li>首先创建一个有序的并有很多元素的list</li>
+</ol>
+<pre><code class="Java">int max = 1000000;
+List&lt;String&gt; values = new ArrayList&lt;&gt;(max);
+for (int i = 0; i &lt; max; i++) &#123;
+    UUID uuid = UUID.randomUUID();
+    values.add(uuid.toString());
+&#125;
+</code></pre>
+<blockquote>
+<p>然后我们来测试一下对这个list排序所消耗的时间。</p>
+</blockquote>
+<p><strong>顺序执行排序(Sequential Sort)</strong></p>
+<pre><code class="Java">long t0 = System.nanoTime();
+
+long count = values.stream().sorted().count();
+System.out.println(count);
+
+long t1 = System.nanoTime();
+
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format(&quot;sequential sort took: %d ms&quot;, millis));
+
+// sequential sort took: 899 ms
+</code></pre>
+<p><strong>并行执行排序(Parallel Sort)</strong></p>
+<pre><code class="Java">long t0 = System.nanoTime();
+
+long count = values.parallelStream().sorted().count();
+System.out.println(count);
+
+long t1 = System.nanoTime();
+
+long millis = TimeUnit.NANOSECONDS.toMillis(t1 - t0);
+System.out.println(String.format(&quot;parallel sort took: %d ms&quot;, millis));
+
+// parallel sort took: 472 ms
+</code></pre>
+<blockquote>
+<p>根据演示可以很直观的看到，代码量上，两种方式几乎一样，但是并行执行的效率比顺序执行的效率要高出近50%，而在编码过程中需要做的仅仅是将<code>stream()</code>替换为<code>parallelStream()</code>。</p>
+</blockquote>
+<h1 id="Map类-Map"><a href="#Map类-Map" class="headerlink" title="Map类(Map)"></a>Map类(Map)</h1><p>虽然Map现在并不支持流操作，但是它也新加入了许多好用的方法去完成一些常用需求。</p>
+<pre><code class="Java">Map&lt;Integer, String&gt; map = new HashMap&lt;&gt;();
+
+for (int i = 0; i &lt; 10; i++) &#123;
+    map.putIfAbsent(i, &quot;val&quot; + i);
+&#125;
+
+map.forEach((id, val) -&gt; System.out.println(val));
+</code></pre>
+<p>上面代码中的<code>putIfAbsent</code>避免了我们在进行新增操作时候的非空校验。<code>forEach</code>则传入了一个消费者去操作map中的每个值。</p>
+<p>下面的例子将展示如何通过函数化接口操作map</p>
+<pre><code class="Java">map.computeIfPresent(3, (num, val) -&gt; val + num);
+map.get(3); // val33
+
+map.computeIfPresent(9, (num, val) -&gt; null);
+map.containsKey(9); // false
+
+map.computeIfAbsent(23, num -&gt; &quot;val&quot; + num);
+map.containsKey(23); // true
+
+map.computeIfAbsent(3, num -&gt; &quot;bam&quot;);
+map.get(3); // val33
+</code></pre>
+<p>下面例子展示在给定key并且当前map内的value与给定值相等时才执行删除操作：</p>
+<pre><code class="Java">map.remove(3, &quot;val3&quot;);
+map.get(3); // val33
+
+map.remove(3, &quot;val33&quot;);
+map.get(3); // null
+</code></pre>
+<p>获取给定key内的值，当不存在时，返回给定的默认值：</p>
+<pre><code class="Java">map.getOrDefault(42, &quot;not found&quot;); // not found
+</code></pre>
+<p>合并merging</p>
+<pre><code class="Java">map.merge(9, &quot;val9&quot;, (value, newValue) -&gt; value.concat(newValue));
+map.get(9); // val9
+
+map.merge(9, &quot;concat&quot;, (value, newValue) -&gt; value.concat(newValue));
+map.get(9); // val9concat
+</code></pre>
+<blockquote>
+<p>如果合并key不冲突则直接合并，否则调用合并方法。</p>
+</blockquote>
+<h1 id="日期API-Date-API"><a href="#日期API-Date-API" class="headerlink" title="日期API(Date API)"></a>日期API(Date API)</h1><p>Java8在<code>java.time</code>包下包含全新的日期和时间API。新的日期API可以与<code>Joda-time</code>库进行比较运算，但是它们并不相同。下面的示例介绍了这个新API最重要的部分。</p>
+<h2 id="时钟类-Clock"><a href="#时钟类-Clock" class="headerlink" title="时钟类(Clock)"></a>时钟类(Clock)</h2><p>时钟类提供对当前日期和时间的访问。时钟类依赖<code>时区</code>，可以使用它代替<code>System.currentTimeMillis()</code>来检索当前毫秒。时间线上的这样一个瞬时点也由<code>Instant</code>类表示.实例可以用来创建原有的<code>java.util.Date</code>对象。</p>
+<pre><code class="Java">Clock clock = Clock.systemDefaultZone();
+long millis = clock.millis();
+
+Instant instant = clock.instant();
+Date legacyDate = Date.from(instant);   // legacy java.util.Date
+</code></pre>
+<h2 id="时区类-Timezones"><a href="#时区类-Timezones" class="headerlink" title="时区类(Timezones)"></a>时区类(Timezones)</h2><p>时区由<code>ZoneId</code>表示。可以通过静态工厂方法访问。时区定义了非常重要的<code>offsets</code>(偏移量)使得它能够在 <code>instants</code>、<code>local dates</code> 与 <code>times</code>之间进行转化。</p>
+<pre><code class="Java">System.out.println(ZoneId.getAvailableZoneIds());
+// prints all available timezone ids
+
+ZoneId zone1 = ZoneId.of(&quot;Europe/Berlin&quot;);
+ZoneId zone2 = ZoneId.of(&quot;Brazil/East&quot;);
+System.out.println(zone1.getRules());
+System.out.println(zone2.getRules());
+
+// ZoneRules[currentStandardOffset=+01:00]
+// ZoneRules[currentStandardOffset=-03:00]
+</code></pre>
+<h2 id="本地时间类-LocalTime"><a href="#本地时间类-LocalTime" class="headerlink" title="本地时间类(LocalTime)"></a>本地时间类(LocalTime)</h2><p>本地时间类不使用时区表示(指显示不包含时区)，例如：<code>10pm</code>或者<code>17:30:15</code>。下面的例子使用上面定义的时区创建了两个<code>LocalTime</code>对象。</p>
+<pre><code class="Java">LocalTime now1 = LocalTime.now(zone1);
+LocalTime now2 = LocalTime.now(zone2);
+
+System.out.println(now1.isBefore(now2));  // false
+
+long hoursBetween = ChronoUnit.HOURS.between(now1, now2);
+long minutesBetween = ChronoUnit.MINUTES.between(now1, now2);
+
+System.out.println(hoursBetween);       // -3
+System.out.println(minutesBetween);     // -239
+</code></pre>
+<blockquote>
+<p><code>LocalTime</code>可以使用很多工厂去简化实例的新建过程，包括转化成字符串。</p>
+</blockquote>
+<pre><code class="Java">LocalTime late = LocalTime.of(23, 59, 59);
+System.out.println(late);       // 23:59:59
+
+DateTimeFormatter germanFormatter =
+    DateTimeFormatter
+        .ofLocalizedTime(FormatStyle.SHORT)
+        .withLocale(Locale.GERMAN);
+
+LocalTime leetTime = LocalTime.parse(&quot;13:37&quot;, germanFormatter);
+System.out.println(leetTime);   // 13:37
+</code></pre>
+<h2 id="本地日期类-LocalDate"><a href="#本地日期类-LocalDate" class="headerlink" title="本地日期类(LocalDate)"></a>本地日期类(LocalDate)</h2><p><code>LocalDate</code>表示一个确定的日期，比如<code>2014-03-11</code>。它与<code>LocalTime</code>类似，也是不可变的。以下例子展示如何通过年月日的加减生成新的日期。<br><strong>注意，每次操作都会返回一个新的实例。</strong></p>
+<pre><code class="Java">LocalDate today = LocalDate.now();
+LocalDate tomorrow = today.plus(1, ChronoUnit.DAYS);
+LocalDate yesterday = tomorrow.minusDays(2);
+
+LocalDate independenceDay = LocalDate.of(2014, Month.JULY, 4);
+DayOfWeek dayOfWeek = independenceDay.getDayOfWeek();
+System.out.println(dayOfWeek);    // FRIDAY
+</code></pre>
+<p>从<code>String</code>(需要是符合日期格式的)转换为<code>LocalDate</code>与<code>LocalTime</code>一样简单。</p>
+<pre><code class="Java">DateTimeFormatter germanFormatter =
+    DateTimeFormatter
+        .ofLocalizedDate(FormatStyle.MEDIUM)
+        .withLocale(Locale.GERMAN);
+
+LocalDate xmas = LocalDate.parse(&quot;24.12.2014&quot;, germanFormatter);
+System.out.println(xmas);   // 2014-12-24
+</code></pre>
+<h2 id="本地日期时间类-LocalDateTime"><a href="#本地日期时间类-LocalDateTime" class="headerlink" title="本地日期时间类(LocalDateTime)"></a>本地日期时间类(LocalDateTime)</h2><p><code>LocalDateTime</code>是日期与时间的组合。他讲上面提到的<code>LocalDate</code>与<code>LocalTime</code>组合成一个新的实例，与之相似，他也是不可变的。我们可以使用工具方法从实例中得到日期或时间相关的值。</p>
+<pre><code class="Java">LocalDateTime sylvester = LocalDateTime.of(2014, Month.DECEMBER, 31, 23, 59, 59);
+
+DayOfWeek dayOfWeek = sylvester.getDayOfWeek();
+System.out.println(dayOfWeek);      // WEDNESDAY
+
+Month month = sylvester.getMonth();
+System.out.println(month);          // DECEMBER
+
+long minuteOfDay = sylvester.getLong(ChronoField.MINUTE_OF_DAY);
+System.out.println(minuteOfDay);    // 1439
+</code></pre>
+<p>通过添加时区的操作可以使其很容易的转换为一个新的<code>Instant </code>实例。而且<code>Instant</code>很容易转换成先前版本的<code>java.util.Date</code>。</p>
+<pre><code class="Java">Instant instant = sylvester
+        .atZone(ZoneId.systemDefault())
+        .toInstant();
+
+Date legacyDate = Date.from(instant);
+System.out.println(legacyDate);     // Wed Dec 31 23:59:59 CET 2014
+</code></pre>
+<p>格式化日期时间就像格式化日期或时间一样。我们可以根据自定义模式创建格式化程序，而无需使用预定义的格式。</p>
+<pre><code class="Java">DateTimeFormatter formatter =
+    DateTimeFormatter
+        .ofPattern(&quot;MMM dd, yyyy - HH:mm&quot;);
+
+LocalDateTime parsed = LocalDateTime.parse(&quot;Nov 03, 2014 - 07:13&quot;, formatter);
+String string = formatter.format(parsed);
+System.out.println(string);     // Nov 03, 2014 - 07:13
+</code></pre>
+<blockquote>
+<p>与<code>java.text.NumberFormat</code>不同,<code>DateTimeFormatter</code>是<code>不可变的</code>且<code>线程安全的</code>。</p>
+</blockquote>
+<h1 id="注解-Annotations"><a href="#注解-Annotations" class="headerlink" title="注解(Annotations)"></a>注解(Annotations)</h1><p>Annotations在Java8中是可以重复的(支持重载的)，比如下面的例子:</p>
+<pre><code class="Java">@interface Hints &#123;
+    Hint[] value();
+&#125;
+
+@Repeatable(Hints.class)
+@interface Hint &#123;
+    String value();
+&#125;
+</code></pre>
+<blockquote>
+<p>Java8能够通过声明注解@Repeable来使用相同类型的多个注解。</p>
+</blockquote>
+<p><strong>使用注解容器(老派)</strong></p>
+<pre><code class="Java">@Hints(&#123;@Hint(&quot;hint1&quot;), @Hint(&quot;hint2&quot;)&#125;)
+class Person &#123;&#125;
+</code></pre>
+<p><strong>使用Repeatable注解(新派)</strong></p>
+<pre><code class="Java">@Hint(&quot;hint1&quot;)
+@Hint(&quot;hint2&quot;)
+class Person &#123;&#125;
+</code></pre>
+<blockquote>
+<p>在使用第二种方式的时候，Java编译器会隐式的声明<code>@Hints</code>注解。</p>
+</blockquote>
+<p>通过反射的方式获取注解：</p>
+<pre><code class="Java">Hint hint = Person.class.getAnnotation(Hint.class);
+System.out.println(hint);                   // null
+
+Hints hints1 = Person.class.getAnnotation(Hints.class);
+System.out.println(hints1.value().length);  // 2
+
+Hint[] hints2 = Person.class.getAnnotationsByType(Hint.class);
+System.out.println(hints2.length);          // 2
+</code></pre>
+<blockquote>
+<p>虽然我们从来没有在<code>Person</code>类上声明过<code>@Hints</code>注解，但它仍能通过<code>getAnnotation(Hints.class)</code>读取到。而更方便的方式是通过<code>getAnnotationsByType</code>,它能赋予所有<code>@Hint</code>注解的直接访问权限。</p>
+</blockquote>
+<p>Java8中注解中拓展了两个新的使用目标(Target)：</p>
+<pre><code class="Java">@Target(&#123;ElementType.TYPE_PARAMETER, ElementType.TYPE_USE&#125;)
+@interface MyAnnotation &#123;&#125;
+</code></pre>
+<p>文章翻译自以下地址：</p>
+<ul>
+<li><a href="https://winterbe.com/posts/2014/03/16/java-8-tutorial/">原始博客地址</a></li>
+<li><a href="https://github.com/winterbe/java8-tutorial">github地址</a></li>
+</ul>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            版权声明:本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a>许可协议。转载请注明来自<a href="https://newgr8player.com" target="_blank">呦呵丶晓晓</a>。
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="http://newgr8player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/">http://newgr8player.github.io/2018/09/14/Java8%E6%96%B0%E7%89%B9%E6%80%A7%E6%A6%82%E8%A7%88/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 Gitalk -->
+<div id="gitalk-comment">
+    <!-- Gitalk 评论框 -->
+<div id="gitalk-container"></div>
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+
+<script>
+    var gitalk = new Gitalk({
+        clientID: '8de73006f112515f4df8',
+        clientSecret: '4443ee1434f3f2527647779ed1d0fe54fc79fd38',
+        repo: 'NewGr8Player.github.io',
+        owner: 'NewGr8Player',
+        admin: ['NewGr8Player'],
+        id: md5(window.location.pathname),
+        // facebook-like distraction free mode
+        distractionFreeMode: false
+    })
+    gitalk.render('gitalk-container')
+</script>
+</div>
+<style>
+    #gitalk-comment {
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2019/08/26/Java-String-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/07/18/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA---%E7%AC%AC%E5%85%AB%E7%AB%A0/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="晓晓Sama's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        呦呵丶晓晓
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto:newgr8player@outlook.com" target="_blank" title="给我发邮件">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        给我发邮件
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2020/11/">十一月 2020<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/09/">九月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/08/">八月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">9</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Docker/">Docker<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Java/">Java<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/LeetCode/">LeetCode<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Linux/">Linux<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/VUE/">VUE<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/python/">python<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E5%88%86%E7%B1%BB/">分类<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式<span class="sidebar_archives-count">3</span></a>
+            </ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">bookmark</i>
+                
+                标签云
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">flip</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">22</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/NewGr8Player/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;呦呵丶晓晓
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+   <!-- GitTalk -->
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('
+<link rel="stylesheet" href="/css/uc.css">
+');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
